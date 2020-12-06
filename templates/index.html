@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="style.css">
+<style>
+
+@font-face{
+font-family: 'TTNorms-Bold';
+src:url('fonts/TTNorms-Bold.otf');
+
+}
+
+h1{
+    font-family: 'TTNorms-Bold';
+    font-size:52px;
+}
+.main{
+    display: grid;
+grid-template-columns: repeat(3,1fr);
+grid-template-rows: repeat(3,1fr);
+
+}
+label {
+    width: 580px;
+    display: inline-block;
+}
+</style>
+</head>
+<body>
+
+    <div>
+        <div class="container mt-2">
+        <div class="row">
+            <div class="col-md-2">
+                <h3>Car Select</h3>
+            </div>
+            <div class="col-md-5">
+                <select name="car" id="main_menu" class="custom-select">
+                    <option value="Audi">Audi</option>
+                    <option value="BMW">BMW</option>
+                    <option value="Jeep">Jeep</option>
+                    <option value="MercedesBenz">Mercedes-Benz</option>
+                    <option value="Maruti">Maruti</option>
+                    <option value="Chevrolet">Chevrolet</option>
+                    <option value="Datsun">Datsun</option>
+                    <option value="Fiat">Fiat</option>
+                    <option value="Ford">Ford</option>
+                    <option value="Honda">Honda</option>
+                    <option value="Hyundai">Hyundai</option>
+                    <option value="Mahindra">Mahindra</option>
+                    <option value="Nissan">Nissan</option>
+                    <option value="Renault">Renault</option>
+                    <option value="Skoda">Skoda</option>
+                    <option value="Tata">Tata</option>
+                    <option value="Toyota">Toyota</option>
+                    <option value="Volkswagen">Volkswagen</option>
+                </select>
+                <h3></h3>
+            </div>
+            <div class="col-md-3">
+                    <select name="carname" id="sub_menu" class="custom-select">
+
+                        </select>
+                <script src="dynamic.js"/></script>
+
+            </div>
+        </div>
+
+        </div>
+
+        <div class="container mt-2">
+        <div class="row">
+            <div class="col-md-2">
+                <h2>The Car Selling Price Predictor</h2>
+            </div>
+
+            <form action="{{ url_for('predict')}}" method="post">
+                What is the Brand Category of the Car :
+                    <select name="Brand_type" required="required" class="custom-select">
+                        <option value="High End Car">High End Car (Audi,BMW,Jeep,Mercedes)</option>
+                        <option value="Genral Car">Genral Car (Maruti,Hyundai,Tata,Volkswagen,Honda,Nissan,etc)</option>
+                    </select>
+                <h3></h3>
+                Are You/Seller a Dealer or a Individual :
+                    <select name="Seller_Type" required="required" class="custom-select">
+                        <option value="Dealer">Dealer</option>
+                        <option value="Individual">Individual</option>
+                    </select>
+                    <h3></h3>
+                What is the Ownership of the Car : <select name="owner" required="required" class="custom-select">
+                        <option value="First">First Owner</option>
+                        <option value="Second">Second Owner</option>
+                        <option value="Third or Above">Third Owner or Above</option>
+                    </select>
+                    <h3></h3>
+                Transmission type : <select name="Transmission" required="required" class="custom-select">
+                        <option value="Mannual">Manual Car</option>
+                        <option value="Automatic">Automatic Car</option>
+                    </select>
+                    <h3></h3>
+                What Is the Fuel type? : <select name="Fuel_Type" required="required" class="custom-select">
+                        <option value="Petrol">Petrol</option>
+                        <option value="Diesel">Diesel</option>
+                        <option value="Gas">Gas</option>
+                    </select>
+                    <h3></h3>
+                <label>Year : </label> <input name="Year" required="required" >
+                <h3></h3>
+                <label>How Many Kilometers Driven? : </label> <input name="km_driven" required="required">
+                <h3></h3>
+                <label>What is the Torque(Nm) of car at best RPM range? : </label> <input name="torque_Nm" required="required">
+                <h3></h3>
+                <label>What is the bhp? : </label>  <input name="max_power_bhp" required="required">
+                <h3></h3>
+                <label>What is the claimed mileage? : </label> <input name="mileage_kmpl" required="required">
+                <h3></h3>
+        <div class="row">
+            <h2><button id="sub" type="submit">Predict Selling Price</button></h2>
+        </div>
+
+        </form>
+    <div class="row">
+    <div class="col-md-15">
+         <h3>{{ prediction_text }}<h3>
+    </div>
+    </div>
+
+        </div>
+        </div>
+
+    </div>
+    <script src="static/dynamic.js"/></script>
+
+
+    <style>
+        body {
+            background-color: lightgray;
+            text-align: left;
+            padding: 0px;
+        }
+
+
+        #sub {
+            width: 180px;
+            height: 60px;
+            text-align: center;
+            border-radius: 30px;
+            font-size: 18px;
+        }
+
+        #sub:hover {
+            background-color: darkcyan;
+        }
+    </style>
+<!--    <script>src="dynamic.js"</script>-->
+
+</body>
+</html>
